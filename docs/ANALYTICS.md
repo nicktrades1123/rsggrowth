@@ -30,7 +30,7 @@ Only fixed metadata is passed to GA: no answer objects, names, emails, business 
 
 ## Important conversion limitation
 
-**The current email-preparation flow does not fire diagnostic_submit.** The browser cannot verify email delivery. Neither preparing/downloading answers nor opening the email client counts as a primary conversion. The hook is already placed after confirmed transport success for when a real backend is separately configured. Server/API failures and invalid receipts never reach it. Do not mark GA's automatically collected form_submit event as the lead conversion.
+**The email-preparation flow does not fire diagnostic_submit.** The browser cannot verify email delivery. Neither preparing/downloading answers nor opening the email client counts as a primary conversion. The hook is placed after confirmed transport success; once the Cloudflare Function and Resend configuration are completed, a confirmed delivery response will fire it. Server/API failures and invalid receipts never reach it. Do not mark GA's automatically collected form_submit event as the lead conversion.
 
 ## After deployment: verify in GA4
 
@@ -40,7 +40,7 @@ Only fixed metadata is passed to GA: no answer objects, names, emails, business 
 4. Click Start a Business Diagnostic from a hero and then another location. Verify diagnostic_cta_click and its source_page, cta_location, destination. Loading the diagnostic alone must not emit diagnostic_start.
 5. Edit a field using clearly fictional test data: diagnostic_start should appear once. Try Continue with incomplete fields: no diagnostic_step. Complete valid fields: steps 2, 3, 4 should appear once each. Go Back and forward: no repeat for the same step.
 6. Prepare the diagnostic. Expect **no diagnostic_submit**. Open the email draft: contact_email_click should appear with diagnostic_confirmation, without subject/body or answers. Other public email links should report their own fixed location.
-7. When direct submission is separately implemented and verified, test its successful receipt in a controlled environment: diagnostic_submit must follow confirmed success, not a click. Keep primary conversion tests out of production reporting where possible. Mark only diagnostic_submit as a Key Event in GA4 Admin → Events; if it has not arrived yet, use the key-event creation control for that exact name. This implementation does not change GA4 Admin settings.
+7. After the Cloudflare Function and Resend configuration is completed, test its successful receipt in a controlled environment: diagnostic_submit must follow confirmed success, not a click. Keep primary conversion tests out of production reporting where possible. Mark only diagnostic_submit as a Key Event in GA4 Admin → Events; if it has not arrived yet, use the key-event creation control for that exact name. This implementation does not change GA4 Admin settings.
 8. Optional: create event-scoped custom dimensions for source_page, cta_location, destination, step_number, and step_name to use them in reports/explorations. A funnel can use diagnostic_start → diagnostic_step 2 → diagnostic_step 3 → diagnostic_step 4 → diagnostic_submit. Its last stage will remain empty under email preparation.
 
 Google references: [SPA pageviews](https://developers.google.com/analytics/devguides/collection/ga4/single-page-applications), [Enhanced Measurement](https://support.google.com/analytics/answer/9216061), [DebugView](https://support.google.com/analytics/answer/7201382), [Key events](https://support.google.com/analytics/answer/9267568).
@@ -49,6 +49,6 @@ Google references: [SPA pageviews](https://developers.google.com/analytics/devgu
 
 Run `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, and `pnpm test:e2e`. Tests stub the Google script, block all external destinations, and serve a simulated production hostname from the local build. They do not send production hits. Unit tests cover deduplication, prepared vs. submitted, metadata filtering, and missing/throwing gtag. Browser tests cover navigation, UTM preservation, validation, step progression/backtracking, email preparation, privacy, and localhost suppression. These checks establish application behavior; live receipt and GA property settings must be verified after deployment.
 
-Created: src/lib/analytics.ts; src/components/analytics.tsx; tests/analytics.test.ts; tests/browser/analytics.spec.ts; docs/ANALYTICS.md.
+Created: src/lib/analytics.ts; src/components/analytics.tsx; tests/analytics.test.ts; tests/browser/analytics.spec.ts; docs/ANALYTICS.md; functions/api/diagnostic.ts; docs/PRODUCTION-SUBMISSION.md; tests/server.test.ts.
 
-Modified: src/app/layout.tsx; src/components/diagnostic-form.tsx; src/app/privacy/page.tsx; public/_headers; package.json; tests/browser/site.spec.ts; tests/browser/industry.spec.ts (time allowance for eight accessibility scans); README.md; docs/SUBMISSIONS.md.
+Modified: src/app/layout.tsx; src/components/diagnostic-form.tsx; src/app/privacy/page.tsx; public/_headers; package.json; tests/browser/site.spec.ts; tests/browser/industry.spec.ts (time allowance for eight accessibility scans); README.md; docs/SUBMISSIONS.md; .env.example.
