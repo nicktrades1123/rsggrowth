@@ -5,6 +5,12 @@ export const site = {
   url: "https://rsggrowth.com",
   email: "grow@rsggrowth.com",
 };
+export const socialImage = {
+  url: "/images/rsg-share.png",
+  width: 1254,
+  height: 1254,
+  alt: "RSG — Strategy, Finance, Growth, Execution. A clearer path to what’s next.",
+};
 export const navigation = [
   { href: "/what-we-do/", label: "What We Do" },
   { href: "/who-we-serve/", label: "Who We Serve" },
@@ -25,6 +31,7 @@ export function pageMetadata(
       description,
       url: path,
       type: "website",
+      images: [socialImage],
     },
   };
 }

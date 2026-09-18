@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { site } from "@/lib/site";
+import { site, socialImage } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,8 +12,13 @@ export const metadata: Metadata = {
   },
   description:
     "Business strategy and advisory for small and growing businesses. Bring clarity to your strategy, finance, growth, and execution with RSG.",
-  openGraph: { siteName: "RSG", locale: "en_US", type: "website" },
-  twitter: { card: "summary" },
+  openGraph: {
+    siteName: "RSG",
+    locale: "en_US",
+    type: "website",
+    images: [socialImage],
+  },
+  twitter: { card: "summary", images: [socialImage] },
   robots: { index: true, follow: true },
 };
 export const viewport: Viewport = { themeColor: "#142b38" };
