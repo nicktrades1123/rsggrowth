@@ -1,6 +1,6 @@
 # RSG website
 
-Boutique business strategy and advisory website built with Next.js App Router, TypeScript, Tailwind CSS, and Zod. Static pages are exported for Cloudflare Pages; only navigation and the diagnostic need client JavaScript. No remote fonts, stock imagery, invented proof, or third-party analytics are included.
+Boutique business strategy and advisory website built with Next.js App Router, TypeScript, Tailwind CSS, and Zod. Static pages are exported for Cloudflare Pages. Navigation, the diagnostic, and production-only GA4 measurement use client JavaScript. No remote fonts, stock imagery, or invented proof are included. See [analytics setup and verification](docs/ANALYTICS.md).
 
 ## Development
 
