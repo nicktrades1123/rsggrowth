@@ -15,6 +15,8 @@ const routes = [
 test("all pages render with metadata, no horizontal overflow, and accessible landmarks", async ({
   page,
 }) => {
+  // This test runs a full accessibility scan on every exported content page.
+  test.setTimeout(60_000);
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   for (const route of routes) {
@@ -170,3 +172,4 @@ test("home fits a narrow 320px viewport", async ({ page }) => {
     ),
   ).toBeTruthy();
 });
+
