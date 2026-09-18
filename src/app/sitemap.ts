@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/what-we-do",
     "/who-we-serve",
+    "/industries/contractors-home-services",
     "/about",
     "/business-diagnostic",
     "/contact",

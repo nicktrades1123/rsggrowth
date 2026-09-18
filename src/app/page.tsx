@@ -154,22 +154,34 @@ export default function Home() {
           <div className="editorial-list">
             {[
               [
-                "Finding direction",
-                "You’re building a business and deciding where to focus.",
+                "Contractors & Home Services",
+                "Roofing, restoration, landscaping, HVAC, construction trades, and specialty contractors building a stronger pipeline and pursuing new opportunities.",
+                "/industries/contractors-home-services/",
               ],
               [
-                "Navigating growth",
-                "Demand is changing, and your plans need to keep pace.",
+                "Small & Growing Businesses",
+                "Owner-led businesses bringing greater structure to strategy, financial performance, business development, and operations.",
+                "/who-we-serve/",
               ],
               [
-                "Strengthening the business",
-                "You want better visibility, stronger processes, and clearer accountability.",
+                "Healthcare & Professional Services",
+                "Practices and service organizations strengthening financial performance, operations, growth planning, and management infrastructure.",
+                "/who-we-serve/",
               ],
-            ].map(([title, copy], i) => (
+              [
+                "Entrepreneurs & New Ventures",
+                "Owners evaluating an idea, entering a market, or building the strategic and financial foundation for a new business.",
+                "/who-we-serve/",
+              ],
+            ].map(([title, copy, href], i) => (
               <div key={title}>
                 <span className="list-number">0{i + 1}</span>
                 <div>
-                  <h3>{title}</h3>
+                  <h3>
+                    <Link className="segment-link" href={href}>
+                      {title} <Arrow />
+                    </Link>
+                  </h3>
                   <p>{copy}</p>
                 </div>
               </div>

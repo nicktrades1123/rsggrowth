@@ -1,4 +1,5 @@
-import { DiagnosticCTA, Eyebrow, PageIntro } from "@/components/ui";
+import Link from "next/link";
+import { Arrow, DiagnosticCTA, Eyebrow, PageIntro } from "@/components/ui";
 import { pageMetadata } from "@/lib/site";
 export const metadata = pageMetadata(
   "Who We Serve",
@@ -63,6 +64,14 @@ export default function WhoWeServe() {
               <Eyebrow>0{i + 1} / Your next chapter</Eyebrow>
               <h2>{stage.title}</h2>
               <p>{stage.text}</p>
+              {i === 0 && (
+                <Link
+                  className="text-link industry-context-link"
+                  href="/industries/contractors-home-services/"
+                >
+                  Explore contractor business support <Arrow />
+                </Link>
+              )}
             </div>
             <div>
               <h3 className="small-heading">Questions you might be asking</h3>

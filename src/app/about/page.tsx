@@ -1,5 +1,6 @@
 import { DiagnosticCTA, Eyebrow, PageIntro } from "@/components/ui";
 import { pageMetadata } from "@/lib/site";
+import { TeamProfile } from "@/components/team-profile";
 export const metadata = pageMetadata(
   "About RSG",
   "RSG is a business strategy and advisory firm focused on Strategy, Finance, Growth, and Execution.",
@@ -75,6 +76,52 @@ export default function About() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="section" aria-labelledby="leadership-heading">
+        <div className="container">
+          <Eyebrow>The experience behind RSG</Eyebrow>
+          <h2 id="leadership-heading">
+            Experience built inside complex businesses. Applied to growing ones.
+          </h2>
+          <TeamProfile
+            name="Dominick Reed"
+            role="Founder"
+            portrait={{
+              src: "/images/dominick-reed.jpg",
+              width: 480,
+              height: 720,
+            }}
+          >
+            <p>
+              Dominick Reed brings nine years of experience across investment
+              banking, management consulting, transaction advisory, corporate
+              development, strategic finance, growth strategy, and business
+              transformation. His professional experience includes Accenture and
+              Stout, alongside his current role as Manager, Corporate
+              Development and Strategic Finance within a multi-site healthcare
+              services organization.
+            </p>
+            <p>
+              His work includes evaluating businesses and growth opportunities,
+              financial and operational analysis, strategic planning,
+              transaction-related work, and translating analysis into executable
+              initiatives.
+            </p>
+            <p>
+              He created RSG to bring structured strategy, financial discipline,
+              growth planning, and execution support to small and growing
+              businesses that may not have an internal strategy, finance, or
+              business-development team. Growing businesses deserve access to
+              the same thoughtful analysis and decision-making disciplines used
+              inside much larger organizations.
+            </p>
+            <p className="profile-note">
+              Professional experience is provided for background only. RSG is
+              independent; current and former employers do not sponsor, endorse,
+              partner with, or have an affiliation with RSG.
+            </p>
+          </TeamProfile>
         </div>
       </section>
       <DiagnosticCTA />
