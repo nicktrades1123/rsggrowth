@@ -32,16 +32,17 @@ export default function Home() {
           <div className="hero-copy">
             <Eyebrow>Business strategy & advisory</Eyebrow>
             <h1>
-              Clarity for your
+              A clearer path
               <br />
-              next <em>chapter.</em>
+              to what’s <em>next.</em>
             </h1>
             <p className="hero-description">
-              Your business has potential. Give it direction.
+              Turn your growth goals into a practical plan.
             </p>
             <p className="hero-detail">
-              RSG helps small and growing businesses connect strategy, finance,
-              growth, and execution—so the next decision leads somewhere.
+              RSG helps small and growing business owners move forward through
+              strategy, financial insight, business development, and execution
+              support.
             </p>
             <div className="hero-actions">
               <ButtonLink href="/business-diagnostic/">
@@ -66,7 +67,7 @@ export default function Home() {
       </section>
       <section id="our-approach" className="section">
         <div className="container section-heading">
-          <Eyebrow>Built for the real work of business</Eyebrow>
+          <Eyebrow>The RSG Framework</Eyebrow>
           <div>
             <h2>
               Running a business is complex.
@@ -74,9 +75,12 @@ export default function Home() {
               Your priorities should be clear.
             </h2>
             <p>
-              Growth brings decisions that rarely sit in just one category. A
-              new opportunity affects cash flow. A strategic shift changes how
-              your team works. RSG brings these conversations together.
+              The RSG Framework connects Strategy, Finance, Growth, and
+              Execution around your goals. Winning customers and entering new
+              markets require a business-development process, a clear view of
+              financial performance, and operations that can support the work.
+              We help you connect those decisions to improving profitability and
+              strengthening the business.
             </p>
           </div>
         </div>
@@ -96,6 +100,38 @@ export default function Home() {
               <span className="card-link">{item.line}</span>
             </Link>
           ))}
+        </div>
+      </section>
+      <section className="section" aria-labelledby="owner-situations">
+        <div className="container split-layout">
+          <div>
+            <Eyebrow>Your next decision</Eyebrow>
+            <h2 id="owner-situations">Where RSG Can Help</h2>
+            <p>
+              Start with the question in front of you. Together, we can work
+              through the options and define practical next steps.
+            </p>
+            <Link href="/business-diagnostic/" className="text-link">
+              Start a Business Diagnostic <Arrow />
+            </Link>
+          </div>
+          <div className="editorial-list">
+            {[
+              "I need more customers.",
+              "I want to win commercial work.",
+              "I'm considering expanding into another market.",
+              "Revenue is growing, but I'm not sure profitability is.",
+              "I need a real sales/business-development process.",
+              "I know where I want the business to go, but I need a plan to get there.",
+            ].map((situation, i) => (
+              <div key={situation}>
+                <span className="list-number">0{i + 1}</span>
+                <div>
+                  <h3>{situation}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <section className="audience-section">

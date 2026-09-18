@@ -11,11 +11,12 @@ export default function BusinessDiagnostic() {
     <>
       <PageIntro
         eyebrow="Business diagnostic"
-        title="A clearer view starts here."
+        title="Let’s understand the business first."
       >
         <p>
-          Step back from the day-to-day. Share a little about your business and
-          the questions you want to work through.
+          Before recommending a solution, RSG wants to understand where your
+          business stands today, where you want to go, and what’s getting in the
+          way.
         </p>
       </PageIntro>
       <div className="container diagnostic-layout">
@@ -25,12 +26,11 @@ export default function BusinessDiagnostic() {
             <br />
             Your starting point.
           </h2>
+          <p>Takes approximately 3–5 minutes. No obligation.</p>
           <p>
-            Four short steps to organize your context, priorities, and goals.
-          </p>
-          <p>
-            This is a conversation starter, not an automated assessment or a
-            commitment to work together.
+            Submitting a diagnostic does not create a consulting engagement.
+            Once RSG receives your responses, we will review them and follow up
+            regarding potential next steps.
           </p>
           <p>
             Prefer to write directly?

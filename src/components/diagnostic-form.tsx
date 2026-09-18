@@ -210,8 +210,9 @@ export function DiagnosticForm() {
         {result.status === "submitted" ? (
           <>
             <p>
-              RSG has received your diagnostic. Keep a copy of your answers for
-              your records.
+              RSG has received your diagnostic. We will review your responses
+              and follow up regarding potential next steps. Keep a copy of your
+              answers for your records.
             </p>
             <p className="field-help">Reference: {result.receiptId}</p>
           </>
@@ -234,6 +235,11 @@ export function DiagnosticForm() {
             </a>
           </>
         )}
+        <p>
+          Once RSG receives your responses, we will review them and follow up
+          regarding potential next steps. Submitting a diagnostic does not
+          create a consulting engagement.
+        </p>
         <div className="secondary-actions">
           <button
             type="button"
