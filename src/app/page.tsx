@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Arrow, ButtonLink, DiagnosticCTA, Eyebrow } from "@/components/ui";
 import { capabilities, pageMetadata } from "@/lib/site";
 
@@ -10,7 +11,23 @@ export const metadata = pageMetadata(
 export default function Home() {
   return (
     <>
-      <section className="home-hero">
+      <section className="home-hero home-hero-architectural">
+        <picture className="hero-architecture">
+          <source
+            media="(max-width: 640px)"
+            srcSet="/images/rsg-architecture-portrait.webp"
+          />
+          <Image
+            src="/images/rsg-architecture-wide.webp"
+            alt=""
+            width={1120}
+            height={350}
+            loading="eager"
+            fetchPriority="high"
+            unoptimized
+            className="hero-architecture-photo"
+          />
+        </picture>
         <div className="container hero-grid">
           <div className="hero-copy">
             <Eyebrow>Business strategy & advisory</Eyebrow>
@@ -35,32 +52,13 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div
-            className="framework-visual"
-            aria-label="Four connected capabilities: Strategy, Finance, Growth, and Execution"
-          >
-            <div className="framework-heading">
-              <span>The RSG framework</span>
-              <span aria-hidden="true">↗</span>
-            </div>
-            <div className="framework-grid">
-              {capabilities.map((item) => (
-                <div key={item.id} className={`framework-cell ${item.id}`}>
-                  <span className="framework-number">{item.number}</span>
-                  <p>{item.name}</p>
-                  <span className="framework-caption">{item.line}</span>
-                </div>
-              ))}
-            </div>
-            <div className="framework-foot">
-              <span>One connected approach.</span>
-              <span aria-hidden="true">—</span>
-              <span>Your business at the center.</span>
-            </div>
-          </div>
         </div>
         <div className="container hero-baseline">
-          <span>Perspective for the decisions ahead.</span>
+          <span>
+            Strategy <i aria-hidden="true">/</i> Finance{" "}
+            <i aria-hidden="true">/</i> Growth <i aria-hidden="true">/</i>{" "}
+            Execution
+          </span>
           <a href="#our-approach">
             Discover our approach <span aria-hidden="true">↓</span>
           </a>

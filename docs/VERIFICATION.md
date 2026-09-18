@@ -83,3 +83,7 @@ Node 24.19.0 and pnpm 11.19.0 were used. Playwright browsers were installed into
 5. Verify Cloudflare preview response headers, unknown-URL HTTP 404 behavior, and any configured delivery path before production launch.
 
 No production deployment, DNS changes, or production-domain configuration changes were made.
+
+## Architectural hero update
+
+Replaced the homepage framework panel with a full-width architectural photograph taken from the owner-supplied Spanish flyer. Desktop and mobile use separate wide/portrait WebP assets (about 49 KB combined), with navy overlays, cream type, gold accents, and decorative empty alt text. The four capabilities remain in the hero baseline and detailed section below. Logo, contact details, and diagnostic behavior are unchanged. Production build and lint passed; homepage accessibility scans and overflow checks passed at 1440px, 390px, and 320px. Source and provenance are documented in public/images/README.md.
