@@ -14,8 +14,9 @@ export default function About() {
       >
         <p>
           RSG is a business strategy and advisory firm focused on Strategy,
-          Finance, Growth, and Execution. We help small and growing businesses
-          think through what comes next.
+          Finance, Growth, and Execution. We bring disciplines from strategy,
+          finance, corporate development, and business growth to the practical
+          decisions facing small and growing business owners.
         </p>
       </PageIntro>
       <section className="section">
@@ -35,9 +36,10 @@ export default function About() {
               progress.
             </p>
             <p>
-              RSG’s approach connects these four capabilities around the
-              realities of your business. The aim is clear thinking, sound
-              decisions, and practical next steps.
+              The RSG Framework connects these four capabilities around the
+              realities of your business. That can mean assessing a new market,
+              developing business relationships, understanding profitability, or
+              turning a growth goal into a plan with clear responsibilities.
             </p>
             <p>
               We start by understanding the context, rather than assuming the

@@ -10,8 +10,9 @@ export default function WhatWeDo() {
     <>
       <PageIntro eyebrow="What we do" title="Four capabilities. One business.">
         <p>
-          Good decisions connect the whole picture. We bring strategy, finance,
-          growth, and execution into the same conversation.
+          The RSG Framework connects Strategy, Finance, Growth, and Execution.
+          We bring these disciplines together to turn business goals into
+          practical plans and support the work of carrying them out.
         </p>
       </PageIntro>
       <nav className="capability-nav container" aria-label="Capabilities">

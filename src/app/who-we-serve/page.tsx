@@ -5,32 +5,41 @@ export const metadata = pageMetadata(
   "Business advisory for small and growing businesses navigating decisions, financial questions, growth, and execution.",
   "/who-we-serve/",
 );
-const stages = [
+const segments = [
   {
-    title: "Building a foundation",
-    text: "You have a business to build and important choices to make. Bring structure to your thinking before adding complexity.",
+    title: "Contractors & Home Services",
+    text: "For owners in roofing, restoration, landscaping, HVAC, construction trades, and specialty contracting who want a more deliberate approach to growth.",
     questions: [
-      "How should I prioritize limited time and resources?",
-      "Does my business model support my goals?",
-      "What do I need to understand about cash and pricing?",
+      "How do we build commercial business development and property-management relationships?",
+      "What do we need to prepare for vendor qualification?",
+      "Which markets should we consider, and what growth strategy will support expansion?",
     ],
   },
   {
-    title: "Managing a growing business",
-    text: "More activity brings more decisions. Align opportunity with the financial and operational capacity to support it.",
+    title: "Small & Growing Businesses",
+    text: "For owners balancing customer demand, profitability, and day-to-day operations. Connect growth goals to the finances, processes, and capacity needed to deliver.",
     questions: [
-      "Which growth opportunities are worth pursuing?",
-      "Can our cash flow support the next step?",
-      "Where are our processes holding us back?",
+      "How do we win more customers through a repeatable sales process?",
+      "Is revenue growth translating into better profitability and cash flow?",
+      "Which operating processes need to improve before we grow further?",
     ],
   },
   {
-    title: "Stepping back to move forward",
-    text: "An established business can benefit from a fresh look. Revisit priorities and connect the plan to the work happening every day.",
+    title: "Healthcare & Professional Services",
+    text: "For owners of practices and service businesses considering how to develop the business alongside delivering their core services. Focus on business planning, financial visibility, and operations.",
     questions: [
-      "Are we focused on the right priorities?",
-      "Do our numbers give us a useful view of performance?",
-      "Who owns the next steps, and how will we review them?",
+      "How do we develop referral relationships and new business opportunities?",
+      "What do our costs, pricing, and capacity tell us about financial performance?",
+      "How can we strengthen operations and plan for expansion?",
+    ],
+  },
+  {
+    title: "Entrepreneurs & New Ventures",
+    text: "For founders turning an idea or early business into a practical path forward. Clarify the market, business model, financial needs, and first priorities.",
+    questions: [
+      "Who are our customers, and how will we reach them?",
+      "What assumptions about pricing, costs, and cash should we test?",
+      "What needs to happen first, and how will we turn the plan into action?",
     ],
   },
 ];
@@ -48,7 +57,7 @@ export default function WhoWeServe() {
         </p>
       </PageIntro>
       <div className="container section">
-        {stages.map((stage, i) => (
+        {segments.map((stage, i) => (
           <section key={stage.title} className="capability-detail">
             <div>
               <Eyebrow>0{i + 1} / Your next chapter</Eyebrow>

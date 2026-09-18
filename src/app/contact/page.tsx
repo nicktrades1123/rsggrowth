@@ -23,21 +23,22 @@ export default function Contact() {
               <span aria-hidden="true">↗</span>
             </a>
             <p>
-              For general questions or to introduce your business, email us
-              directly. Please avoid sending sensitive financial or personal
-              records.
+              For general inquiries, email us directly. Please avoid sending
+              sensitive financial or personal records.
             </p>
           </div>
           <div className="contact-diagnostic">
-            <Eyebrow>Not sure where to begin?</Eyebrow>
+            <Eyebrow>Consulting inquiries</Eyebrow>
             <h2>
               Start with the
               <br />
               Business Diagnostic.
             </h2>
             <p>
-              Organize your goals and challenges into a useful starting point
-              for a conversation.
+              For substantive consulting inquiries, start with the Business
+              Diagnostic. Share where your business stands, your goals, and the
+              challenges you want to address so RSG can consider potential next
+              steps.
             </p>
             <ButtonLink href="/business-diagnostic/">
               Start a Business Diagnostic
