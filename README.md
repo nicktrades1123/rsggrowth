@@ -43,6 +43,6 @@ The four diagnostic steps collect contact/business context, stage/priorities, go
 
 The original repository contained only a README. The owner subsequently supplied the transparent RSG logo; it is used unmodified in the header and footer. No backend was supplied. Review business/legal copy before launch.
 
-The default diagnostic prepares an email; it does **not** claim delivery. To enable direct submission, implement and verify the actual server handler in [docs/SUBMISSIONS.md](docs/SUBMISSIONS.md). Never put provider secrets in browser code.
+The default diagnostic prepares an email; it does **not** claim delivery. A Cloudflare Pages Function and Resend adapter are prepared for direct submission, but delivery remains disabled until the encrypted production variables and sender verification described in [docs/PRODUCTION-SUBMISSION.md](docs/PRODUCTION-SUBMISSION.md) are completed. Never put provider secrets in browser code.
 
 See [the implementation plan](docs/IMPLEMENTATION-PLAN.md) and [Cloudflare deployment requirements](docs/CLOUDFLARE.md). DNS and production-domain configuration are outside this implementation.

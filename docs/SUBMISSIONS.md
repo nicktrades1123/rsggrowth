@@ -1,14 +1,16 @@
 # Diagnostic submission contract
 
-## Current behavior: no production backend
+## Current behavior: backend prepared, production delivery disabled by default
 
-`NEXT_PUBLIC_DIAGNOSTIC_SUBMISSION_ENABLED=false` is the default. No request is made and no answer is persisted. The four-step form validates, reviews, and prepares an email draft. Confirmation explicitly says **not sent**. Visitors can download a text summary and email it to grow@rsggrowth.com. Email-client limits vary; the download is the fallback if a mailto draft is truncated.
+`NEXT_PUBLIC_DIAGNOSTIC_SUBMISSION_ENABLED=false` remains the safe default until the required Cloudflare and Resend configuration is completed. With it disabled, no request is made and no answer is persisted. The four-step form validates, reviews, and prepares an email draft. Confirmation explicitly says **not sent**. Visitors can download a text summary and email it to grow@rsggrowth.com. Email-client limits vary; the download is the fallback if a mailto draft is truncated.
 
-There are no email credentials, API tokens, databases, fake responses, or undocumented submission endpoints in this implementation. Diagnostic answers are not stored in client-side storage or sent to analytics. The production website measures only funnel metadata through GA4; see [analytics behavior](ANALYTICS.md).
+The production endpoint is now prepared at `functions/api/diagnostic.ts`. It is not claimed operational until Resend sender verification, encrypted secrets, the enabled build flag, and an end-to-end delivery test are complete. See [docs/PRODUCTION-SUBMISSION.md](PRODUCTION-SUBMISSION.md).
+
+There are no email credentials, API tokens, databases, fake responses, or undocumented submission endpoints in the repository. Diagnostic answers are not stored in client-side storage or sent to analytics. The production website measures only funnel metadata through GA4; see [analytics behavior](ANALYTICS.md).
 
 ## Before enabling direct submission
 
-Deploy an actual same-origin `POST /api/diagnostic` handler, for example a Cloudflare Pages Function at `functions/api/diagnostic.ts` integrated with an approved email/CRM provider. It is intentionally NOT implemented until provider, storage, access, and retention requirements are known. A static Next.js export cannot run Next.js API routes or Server Actions.
+The same-origin `POST /api/diagnostic` handler is a Cloudflare Pages Function at `functions/api/diagnostic.ts`, integrated with Resend. A static Next.js export cannot run Next.js API routes or Server Actions.
 
 1. Validate the full JSON body on the server with `diagnosticSchema` from `src/lib/diagnostic.ts`. Client validation is only a usability feature. Impose a request body size limit (e.g. 16 KB), enforce JSON content type, POST only, and a same-origin Origin policy. Do not accept arbitrary destinations or client-supplied email headers.
 2. Add rate limiting and appropriate spam protection. If Turnstile is chosen, validate its token server-side and update the CSP for the official widget origins. Do not log diagnostic payloads or include personal data in URLs.
@@ -19,4 +21,4 @@ Deploy an actual same-origin `POST /api/diagnostic` handler, for example a Cloud
 7. Review the Privacy Policy against the real service providers, retention practice, company jurisdiction, and operational processes before launch.
 8. Only then set `NEXT_PUBLIC_DIAGNOSTIC_SUBMISSION_ENABLED=true` in the build environment and rebuild. This public flag is not a credential or security boundary.
 
-Keep direct submission disabled until the entire path is verified. The email preparation mode remains usable without backend configuration.
+Keep direct submission disabled until the entire path is verified and the required production variables are configured. The email preparation mode remains usable without backend configuration.
