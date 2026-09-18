@@ -110,7 +110,7 @@ test("diagnostic validates, retains answers when going back, and prepares an hon
   await expect(page.getByText("It has not been sent to RSG.")).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Open email draft" }),
-  ).toHaveAttribute("href", /^mailto:grow@rsggrowth\.com\?subject=/);
+  ).toHaveAttribute("href", "mailto:grow@rsggrowth.com");
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download my answers" }).click();
   expect((await downloadPromise).suggestedFilename()).toBe(
@@ -172,4 +172,3 @@ test("home fits a narrow 320px viewport", async ({ page }) => {
     ),
   ).toBeTruthy();
 });
-

@@ -48,9 +48,22 @@ export default function Privacy() {
         <p>
           Hosting, security, and email providers may process technical
           information such as IP addresses, request details, and email metadata
-          to deliver their services. The website code does not include
-          advertising trackers or analytics cookies. Your email provider’s own
-          terms and privacy practices apply when you send an email.
+          to deliver their services. Your email provider’s own terms and privacy
+          practices apply when you send an email.
+        </p>
+        <h2>Website analytics</h2>
+        <p>
+          RSG uses Google Analytics 4 to understand website visits, referral and
+          campaign sources, and interactions such as diagnostic steps and
+          contact-link clicks. Google Analytics uses cookies and processes
+          technical information about your browser and device. RSG does not send
+          diagnostic answers, names, email addresses, business names, or other
+          inquiry details in its analytics events. Advertising personalization
+          and Google signals are disabled in the website tag. Learn more about{" "}
+          <a href="https://policies.google.com/technologies/partner-sites">
+            how Google uses information from sites that use its services
+          </a>
+          .
         </p>
         <h2>Access, retention, and security</h2>
         <p>

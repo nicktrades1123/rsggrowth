@@ -4,7 +4,7 @@
 
 `NEXT_PUBLIC_DIAGNOSTIC_SUBMISSION_ENABLED=false` is the default. No request is made and no answer is persisted. The four-step form validates, reviews, and prepares an email draft. Confirmation explicitly says **not sent**. Visitors can download a text summary and email it to grow@rsggrowth.com. Email-client limits vary; the download is the fallback if a mailto draft is truncated.
 
-There are no email credentials, API tokens, databases, fake responses, or undocumented third-party endpoints in this implementation. No analytics or client-side storage is used.
+There are no email credentials, API tokens, databases, fake responses, or undocumented submission endpoints in this implementation. Diagnostic answers are not stored in client-side storage or sent to analytics. The production website measures only funnel metadata through GA4; see [analytics behavior](ANALYTICS.md).
 
 ## Before enabling direct submission
 

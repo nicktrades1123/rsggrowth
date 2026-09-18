@@ -48,6 +48,8 @@ test("contractor discovery, metadata, and diagnostic routes are connected", asyn
 });
 
 test("new content fits narrow mobile and tablet widths", async ({ page }) => {
+  // Eight full axe scans can exceed the default timeout on slower machines.
+  test.setTimeout(60_000);
   for (const width of [320, 768]) {
     await page.setViewportSize({ width, height: 1000 });
     for (const path of ["/", "/about/", "/who-we-serve/", route]) {

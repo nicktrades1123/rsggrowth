@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { createDiagnosticTracking } from "@/lib/analytics";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   diagnosticSchema,
@@ -128,6 +129,7 @@ export function DiagnosticForm() {
   const didMount = useRef(false);
   const locked = useRef(false);
   const requestId = useRef("");
+  const analytics = useRef(createDiagnosticTracking());
   useEffect(() => {
     if (didMount.current) heading.current?.focus();
     else didMount.current = true;
@@ -139,6 +141,7 @@ export function DiagnosticForm() {
     }
   }, [errors]);
   function update(key: FieldName, value: string | boolean | string[]) {
+    analytics.current.start();
     setDraft((current) => ({ ...current, [key]: value }));
     setErrors((current) => {
       const next = { ...current };
@@ -156,6 +159,7 @@ export function DiagnosticForm() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
     if (step < 3) {
+      analytics.current.advance(step + 2);
       setStep(step + 1);
       return;
     }
@@ -170,7 +174,9 @@ export function DiagnosticForm() {
     setDeliveryError("");
     try {
       requestId.current ||= crypto.randomUUID();
-      setResult(await submitDiagnostic(parsed.data, requestId.current));
+      const response = await submitDiagnostic(parsed.data, requestId.current);
+      setResult(response);
+      analytics.current.complete(response);
     } catch (error) {
       setDeliveryError(
         error instanceof Error && error.name !== "TimeoutError"
@@ -229,7 +235,13 @@ export function DiagnosticForm() {
             </p>
             <a
               className="button"
-              href={`mailto:grow@rsggrowth.com?subject=${encodeURIComponent("Business Diagnostic — " + draft.company)}&body=${encodeURIComponent(summary)}`}
+              href="mailto:grow@rsggrowth.com"
+              onClick={(event) => {
+                // Keep private answers out of the DOM link URL, which automatic
+                // outbound-link measurement could otherwise collect.
+                event.preventDefault();
+                window.location.href = `mailto:grow@rsggrowth.com?subject=${encodeURIComponent("Business Diagnostic — " + draft.company)}&body=${encodeURIComponent(summary)}`;
+              }}
             >
               Open email draft <span aria-hidden="true">↗</span>
             </a>
@@ -266,6 +278,7 @@ export function DiagnosticForm() {
               setResult(null);
               setErrors({});
               requestId.current = "";
+              analytics.current = createDiagnosticTracking();
             }}
           >
             Clear and start again
