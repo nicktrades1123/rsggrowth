@@ -5,6 +5,7 @@ const routes = [
   "/",
   "/what-we-do/",
   "/who-we-serve/",
+  "/industries/contractors-home-services/",
   "/about/",
   "/business-diagnostic/",
   "/contact/",
