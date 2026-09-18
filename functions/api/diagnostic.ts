@@ -5,7 +5,6 @@ interface Env {
   RESEND_FROM_EMAIL?: string;
   RSG_ALLOWED_ORIGIN?: string;
 }
-type PagesContext = { request: Request; env: Env };
 type PagesFunction<T = Env> = (context: {
   request: Request;
   env: T;
@@ -159,3 +158,4 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return json({ error: "Method not allowed." }, 405);
   return onRequestPost(context);
 };
+
