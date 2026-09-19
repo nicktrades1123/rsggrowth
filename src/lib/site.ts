@@ -15,6 +15,7 @@ export const navigation = [
   { href: "/what-we-do/", label: "What We Do" },
   { href: "/who-we-serve/", label: "Who We Serve" },
   { href: "/about/", label: "About RSG" },
+  { href: "/careers/", label: "Career Strategy" },
   { href: "/contact/", label: "Contact" },
 ];
 export function pageMetadata(
@@ -93,3 +94,4 @@ export const capabilities = [
     question: "How will the work move forward?",
   },
 ] as const;
+

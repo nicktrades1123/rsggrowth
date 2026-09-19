@@ -9,8 +9,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/industries/contractors-home-services",
     "/about",
     "/business-diagnostic",
+    "/careers",
+    "/careers/diagnostic",
     "/contact",
     "/privacy",
     "/terms",
   ].map((path) => ({ url: `${site.url}${path}/` }));
 }
+

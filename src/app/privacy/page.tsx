@@ -37,6 +37,12 @@ export default function Privacy() {
           Diagnostic” and sends the information to RSG; a receipt is shown only
           after the service confirms acceptance.
         </p>
+        <h2>Career Diagnostic</h2>
+        <p>The Career Diagnostic collects contact details, professional background, goals, job-search challenges, prior efforts, timing, and optional context. Answers stay in the current tab until you submit. Direct submissions are processed by Cloudflare and sent to RSG through Resend. RSG uses them to review your inquiry and discuss potential support. Resume uploads are not collected through this form.</p>
+        <h2>Client feedback and publication</h2>
+        <p>Private review invitations use random, expiring, single-use links. Treat your link as private. Invitation token hashes and feedback are stored in Cloudflare D1. Feedback includes a rating, your original written responses, optional outcome, chosen public identity, optional title and industry, publication consent, and moderation timestamps. No email address or phone number is requested in the review form.</p>
+        <p>Feedback begins as pending. Only feedback with affirmative publication permission and RSG approval may appear publicly. You may submit private feedback without giving that permission. Approved feedback may show your chosen first name and last initial, first name only, or Anonymous, plus any optional public details you supplied. Contact grow@rsggrowth.com to request withdrawal or deletion. Reviews are not independently verified by a third party.</p>
+        <p>Review pages do not load Google Analytics. Private tokens and feedback are not sent in analytics events. Hosting infrastructure may process request metadata for security. RSG restricts review administration to an authenticated operator; retention and deletion requests are handled by RSG.</p>
         <h2>How inquiry information is used</h2>
         <p>
           Information you send to RSG is used to understand your inquiry,
@@ -88,3 +94,4 @@ export default function Privacy() {
     </>
   );
 }
+

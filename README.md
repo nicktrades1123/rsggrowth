@@ -1,5 +1,7 @@
 # RSG website
 
+RSG now includes separate Business Advisory and Career Strategy practices. See [Career Strategy](docs/CAREER_STRATEGY.md) for `/careers/`, the Career Diagnostic, provider setup, and event definitions. See [private client reviews](docs/REVIEWS.md) for the D1 migration, secure invitations, operator commands, and consent/moderation-controlled Client Experiences. New server functionality fails closed until configured; no credentials or fake testimonials are included. Existing business behavior remains intact.
+
 Boutique business strategy and advisory website built with Next.js App Router, TypeScript, Tailwind CSS, and Zod. Static pages are exported for Cloudflare Pages. Navigation, the diagnostic, and production-only GA4 measurement use client JavaScript. No remote fonts, stock imagery, or invented proof are included. See [analytics setup and verification](docs/ANALYTICS.md).
 
 ## Development
@@ -46,3 +48,4 @@ The original repository contained only a README. The owner subsequently supplied
 The default diagnostic prepares an email; it does **not** claim delivery. A Cloudflare Pages Function and Resend adapter are prepared for direct submission, but delivery remains disabled until the encrypted production variables and sender verification described in [docs/PRODUCTION-SUBMISSION.md](docs/PRODUCTION-SUBMISSION.md) are completed. Never put provider secrets in browser code.
 
 See [the implementation plan](docs/IMPLEMENTATION-PLAN.md) and [Cloudflare deployment requirements](docs/CLOUDFLARE.md). DNS and production-domain configuration are outside this implementation.
+

@@ -211,6 +211,7 @@ export default function ContractorsHomeServices() {
           </div>
         </div>
       </section>
+      <ClientExperiences practice="business" service="contractor_growth" />
       <section className="cta-band">
         <div className="container cta-inner">
           <div>
@@ -231,3 +232,5 @@ export default function ContractorsHomeServices() {
     </>
   );
 }
+import { ClientExperiences } from "@/components/client-experiences";
+

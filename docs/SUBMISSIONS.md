@@ -1,5 +1,9 @@
 # Diagnostic submission contract
 
+## Separate Career Diagnostic
+
+The Business Diagnostic implementation below is unchanged. Career Strategy uses a separate `POST /api/career-diagnostic` Pages Function and questionnaire, sharing the Resend provider conventions. It is gated server-side by `CAREER_SUBMISSIONS_ENABLED=true`, requires the existing Resend secrets, and returns success only after a validated provider receipt. Missing configuration produces an honest unavailable response; the form retains answers. Provider idempotency reduces accidental retry duplicates. See [CAREER_STRATEGY.md](CAREER_STRATEGY.md) for exact fields, setup, and limitations. Review submissions use D1 rather than email; see [REVIEWS.md](REVIEWS.md).
+
 ## Current behavior: backend prepared, production delivery disabled by default
 
 `NEXT_PUBLIC_DIAGNOSTIC_SUBMISSION_ENABLED=false` remains the safe default until the required Cloudflare and Resend configuration is completed. With it disabled, no request is made and no answer is persisted. The four-step form validates, reviews, and prepares an email draft. Confirmation explicitly says **not sent**. Visitors can download a text summary and email it to grow@rsggrowth.com. Email-client limits vary; the download is the fallback if a mailto draft is truncated.
@@ -22,3 +26,4 @@ The same-origin `POST /api/diagnostic` handler is a Cloudflare Pages Function at
 8. Only then set `NEXT_PUBLIC_DIAGNOSTIC_SUBMISSION_ENABLED=true` in the build environment and rebuild. This public flag is not a credential or security boundary.
 
 Keep direct submission disabled until the entire path is verified and the required production variables are configured. The email preparation mode remains usable without backend configuration.
+

@@ -32,15 +32,15 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/business-diagnostic/">Business Diagnostic</Link>
           </nav>
-          <p className="footer-note">
-            Strategy. Finance.
-            <br />
-            Growth. Execution.
-            <br />
-            <span>Built around your business.</span>
-          </p>
+          <nav aria-label="RSG practices" className="practice-links">
+            <span className="small-heading">For businesses</span>
+            <Link href="/what-we-do/">Business Advisory</Link>
+            <Link href="/business-diagnostic/">Business Diagnostic</Link>
+            <span className="small-heading">For professionals</span>
+            <Link href="/careers/">Career Strategy</Link>
+            <Link href="/careers/diagnostic/">Career Diagnostic</Link>
+          </nav>
         </div>
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} RSG. All rights reserved.</p>
@@ -53,3 +53,4 @@ export function Footer() {
     </footer>
   );
 }
+
