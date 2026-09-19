@@ -1,5 +1,28 @@
 @import "tailwindcss";
 
+.career-descriptor { font-size: .8rem; color: var(--navy); margin-bottom: 20px; }
+.review-page { max-width: 780px; padding-block: 55px 80px; }
+.rating-options { display: flex; flex-wrap: wrap; gap: 10px; }
+.rating-options .choice { min-width: 65px; min-height: 48px; }
+.identity-choice { padding-block: 9px; }
+.review-consent { margin-top: 24px; }
+.practice-links .small-heading { margin: 0; }
+.practice-links .small-heading:not(:first-child) { margin-top: 16px; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 36px; }
+.client-experience { margin: 0; border-top: 1px solid var(--gold); padding-top: 24px; overflow-wrap: anywhere; }
+.client-experience blockquote { margin: 18px 0; font-family: Georgia, serif; font-size: 1.3rem; }
+.client-experience .experience-change { font-size: .9rem; }
+.client-experience figcaption { margin-top: 22px; font-size: .8rem; }
+@media (max-width: 640px) { .testimonial-grid { grid-template-columns: 1fr; } }
+/* Keep the additional practice destination comfortable at intermediate widths. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .header-inner { flex-wrap: wrap; gap: 0; padding-top: 12px; }
+  .menu-toggle { display: flex; align-items: center; gap: 25px; padding: 12px; background: transparent; border: 0; }
+  .main-nav { display: none; width: 100%; flex-direction: column; align-items: stretch; padding: 15px 0 25px; gap: 0; }
+  .main-nav.is-open { display: flex; }
+  .main-nav .nav-cta { margin-top: 12px; justify-content: space-between; }
+}
+
 .team-profile {
   display: grid;
   grid-template-columns: minmax(160px, 240px) minmax(0, 1fr);
@@ -1553,3 +1576,4 @@ input[type="checkbox"] {
     font-size: 0.65rem;
   }
 }
+

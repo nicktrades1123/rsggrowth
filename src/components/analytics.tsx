@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
 import { measurementId, trackEvent, type CtaLocation } from "@/lib/analytics";
 
@@ -21,13 +22,16 @@ function locationFor(link: HTMLAnchorElement): CtaLocation {
 const subscribe = () => () => {};
 const isProductionBrowser = () =>
   ["rsggrowth.com", "www.rsggrowth.com"].includes(window.location.hostname) &&
+  !/^\/review(?:\/|$)/.test(window.location.pathname) &&
   !navigator.webdriver;
 export function Analytics() {
-  const enabled = useSyncExternalStore(
+  const path = usePathname();
+  const production = useSyncExternalStore(
     subscribe,
     isProductionBrowser,
     () => false,
   );
+  const enabled = production && !/^\/review(?:\/|$)/.test(path);
   useEffect(() => {
     // Production domains only. Localhost, Pages previews, and automated browsers
     // never load the tag or send production hits by default.
@@ -63,11 +67,13 @@ export function Analytics() {
           url.pathname.replace(/\/$/, "") === "/business-diagnostic"
         ) {
           trackEvent({ name: "diagnostic_cta_click", cta_location });
+        } else if (url.origin === window.location.origin && url.pathname.replace(/\/$/, "") === "/careers/diagnostic") {
+          trackEvent({ name: "career_cta_click", cta_location });
         } else if (
           url.protocol === "mailto:" &&
           url.pathname.toLowerCase() === "grow@rsggrowth.com"
         ) {
-          trackEvent({ name: "contact_email_click", cta_location });
+          trackEvent({ name: window.location.pathname.startsWith("/careers/") ? "career_contact_click" : "contact_email_click", cta_location });
         }
       } catch {
         /* Invalid URLs or blocked analytics cannot affect navigation. */
@@ -88,3 +94,4 @@ export function Analytics() {
     />
   ) : null;
 }
+

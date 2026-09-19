@@ -8,6 +8,7 @@ import { navigation } from "@/lib/site";
 
 export function Header() {
   const path = usePathname();
+  const career = path.startsWith("/careers");
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -70,14 +71,15 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/business-diagnostic/"
+            href={career ? "/careers/diagnostic/" : "/business-diagnostic/"}
             className="nav-cta"
             onClick={() => setOpen(false)}
           >
-            Start a Business Diagnostic <span aria-hidden="true">↗</span>
+            {career ? "Start Your Career Diagnostic" : "Start a Business Diagnostic"} <span aria-hidden="true">↗</span>
           </Link>
         </nav>
       </div>
     </header>
   );
 }
+

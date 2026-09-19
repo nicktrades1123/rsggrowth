@@ -2,6 +2,14 @@
 
 Measurement ID: `G-R5MV45MJJD` (public identifier, not a secret).
 
+## Career Strategy extension
+
+Business event names and confirmed-success behavior are unchanged. Career pages add `career_cta_click` (source_page, cta_location, fixed destination), `career_diagnostic_start` (source_page), `career_diagnostic_step` (source_page, fixed destination step_number/step_name), `career_diagnostic_submit` (source_page, only after confirmed server receipt), and `career_contact_click` (source_page, cta_location). Steps 2–8 are deduplicated within the mounted career form; failures/back navigation never generate conversions. Career paths are explicitly allowlisted. No candidate data enters analytics.
+
+The private `/review/` page never loads the Google tag and `trackEvent` suppresses all events there. No review events are implemented because invitation privacy is more useful than tracking this small flow. Invitation tokens use URL fragments, are removed from the address bar at opening, and are never passed as analytics parameters. Do not add third-party scripts, link tracking, or Google Analytics to review pages. Invitations should be opened as ordinary external links; there are no internal Next.js links into this route.
+
+Verify the Career funnel with fictional data: start once, validated destination steps once, failed submission with no conversion, then one confirmed career_diagnostic_submit. Keep the business conversion separate. Review fixtures and Google/Resend calls are isolated in automated tests. See [Career Strategy](CAREER_STRATEGY.md) and [Reviews](REVIEWS.md) for setup and live smoke testing.
+
 ## Architecture and pre-change findings
 
 The static Next.js App Router website had no GA, GTM, or other analytics code. The diagnostic is a four-step client form using in-memory state and Zod validation. Its production flag is false: completion prepares a draft/download, not a submission. The optional same-origin transport returns `submitted` only after a valid server receipt. This implementation does not enable, replace, or modify that transport or its destination.
@@ -52,3 +60,4 @@ Run `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, and `pnpm test:e2e
 Created: src/lib/analytics.ts; src/components/analytics.tsx; tests/analytics.test.ts; tests/browser/analytics.spec.ts; docs/ANALYTICS.md; functions/api/diagnostic.ts; docs/PRODUCTION-SUBMISSION.md; tests/server.test.ts.
 
 Modified: src/app/layout.tsx; src/components/diagnostic-form.tsx; src/app/privacy/page.tsx; public/_headers; package.json; tests/browser/site.spec.ts; tests/browser/industry.spec.ts (time allowance for eight accessibility scans); README.md; docs/SUBMISSIONS.md; .env.example.
+
